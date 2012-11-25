@@ -1,3 +1,9 @@
+/** 
+ * Copyright (c) 2012 Jeremy Blalock - jblalock@berkeley.edu
+ * Dual licensed under MIT and GPL.
+ * @author Jeremy Blalock
+ * @version 0.0.1
+ */
 (function($) {
 
   function typeExpand(e, $el) {
@@ -43,7 +49,7 @@
     }, 0);
   }
 
-  $.fn.expandable = function() {
+  $.fn.autoexpand = function() {
     this.each(function() {
       $(this).keypress(function(e) {
         typeExpand(e, $(this));
