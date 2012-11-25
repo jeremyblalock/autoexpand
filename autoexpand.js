@@ -13,13 +13,10 @@
   }
 
   function getSetHeight($el, text) {
-    var height = getHeight($el, text),
-        padHeight = parseInt($el.css('padding-top'))
-                  + parseInt($el.css('padding-bottom'))
-                  + parseInt($el.css('border-top-width'))
-                  + parseInt($el.css('border-bottom-width'));
+    var height = getHeight($el, text);
     $el.css({
-      height: height + padHeight
+      boxSizing: 'content-box',
+      height: height
     });
   }
 
@@ -32,7 +29,9 @@
       font: $el.css('font'),
       width: $el.width(),
       lineHeight: $el.css('line-height'),
-      wordWrap: 'break-word'
+      wordWrap: 'break-word',
+      position: 'absolute',
+      bottom: '200xpx'
     });
     test.text(text);
     test.appendTo($('body'));
@@ -54,10 +53,11 @@
       $(this).keypress(function(e) {
         typeExpand(e, $(this));
       });
-      $(this).bind('paste', delayExpand);
-      $(this).bind('cut', delayExpand);
-      $(this).bind('keydown', delayExpand);
-      $(this).bind('keyup', delayExpand);
+      //$(this).bind('paste', delayExpand);
+      //$(this).bind('cut', delayExpand);
+      //$(this).bind('keydown', delayExpand);
+      //$(this).bind('keyup', delayExpand);
+      $(this).bind('input', delayExpand);
     });
   }
 
