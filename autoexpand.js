@@ -21,7 +21,7 @@
   }
 
   function getHeight($el, text) {
-    var test = $('<div></div>'), height;
+    var test = $('<pre></pre>'), height;
     if (text.trim() == '') {
       text = 'A';
     }
@@ -50,6 +50,7 @@
 
   $.fn.autoexpand = function() {
     this.each(function() {
+      $(this).css('resize', 'none');
       $(this).keypress(function(e) {
         typeExpand(e, $(this));
       });
@@ -58,6 +59,8 @@
       //$(this).bind('keydown', delayExpand);
       //$(this).bind('keyup', delayExpand);
       $(this).bind('input', delayExpand);
+      $(this).bind('change', delayExpand);
+      $(this).each(delayExpand);
     });
   }
 
